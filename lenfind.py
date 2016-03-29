@@ -25,7 +25,13 @@ def main():
                     min_n = n
                     min_total = total
     if min_n != -1 and min_total != -1:
-        print "Best candidate: size=%d with %d possible values." % (min_n, min_total)
+        candidates = sorted(n_dict, key=n_dict.get)
+        if len(candidates) > 10:
+            candidates = candidates[:10]
+        output = "Size\tPossible\n"
+        for cand in candidates:
+            output += "%d\t%d\n" % (cand, n_dict[cand])
+        print output
     else:
         print "No candidates found."
 
